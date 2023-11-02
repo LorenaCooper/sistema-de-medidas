@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Conversão de Medidas</title>
+</head>
+<body>
+    <h1>Conversor de Medidas</h1>
+    
+    <label for="valor">Insira o valor:</label>
+    <input type="number" id="valor">
+    
+    <label for="selecao">Selecione a unidade de medida:</label>
+    <select id="selecao">
+        <option value="cm">Centímetros (cm)</option>
+        <option value="in">Polegadas (in)</option>
+        <option value="m">Metros (m)</option>
+    </select>
+    
+    <button onclick="converterMedida()">Converter</button>
+    
+    <p id="resultado"></p>
+    
+    <script>
+        function converterMedida() {
+            const valor = parseFloat(document.getElementById('valor').value);
+            const unidade = document.getElementById('selecao').value;
+            let resultado = 0;
+            
+            if (unidade === 'cm') {
+                resultado = valor + " cm é igual a " + (valor / 2.54).toFixed(2) + " polegadas (in).";
+            } else if (unidade === 'in') {
+                resultado = valor + " polegadas (in) é igual a " + (valor * 2.54).toFixed(2) + " centímetros (cm).";
+            } else if (unidade === 'm') {
+                resultado = valor + " metros (m) é igual a " + (valor * 100).toFixed(2) + " centímetros (cm).";
+            }
+            
+            document.getElementById('resultado').textContent = resultado;
+        }
+    </script>
+</body>
+</html>
